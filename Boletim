@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class BoletimOnline {
+
+	public static void main(String[] args) {
+		double nota1;
+		double nota2;
+		
+		Scanner leitor = new Scanner(System.in);
+		System.out.println("Digite a primeira nota: ");
+		nota1 = leitor.nextDouble();
+		System.out.println("Digite a segunda nota: ");
+		nota2 = leitor.nextDouble();
+		double media = (nota1 + nota2) / 2;
+		
+		if(media < 6) {
+			System.out.println("Você reprovou, sua méia final foi: " + media);
+		} else {
+			System.out.println("Você passou! Sua média final foi: " + media);
+		}
+		
+
+	}
+
+}
