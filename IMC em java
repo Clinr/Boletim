@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+public class IMC {
+
+	public static void main(String[] args) {
+		double alt;
+		double peso;
+		Scanner leitor = new Scanner(System.in);
+		System.out.println("Digite seu peso em quilos: ");
+		peso = leitor.nextDouble();
+		System.out.println("Digite sua altura em metros: ");
+		alt = leitor.nextDouble();
+		double imc = peso / (alt * alt);
+		if(imc <= 16.9	) {
+			System.out.printf("Você está muito abaixo do peso, seu IMC é: = %.2f %n", (imc));
+		} else if(imc <= 18.4 && imc >= 17) {
+			System.out.printf("Você está abaixo do peso, seu IMC é: = %.2f %n", (imc));
+		} else if(imc >= 18.5 && imc <= 24.9) {
+		  System.out.printf("Seu peso é normal, seu IMC é: = %.2f %n", (imc));
+		} else if(imc >= 25 && imc <= 29.9) {
+			System.out.printf("Você está acima do peso, seu IMC é: = %.2f %n", (imc));
+		} else if(imc >= 30 && imc <= 34.9) {
+			System.out.printf("Você está com obesidade grau 1, seu IMC é: = %.2f %n", (imc)); 
+		} else if(imc >= 35 && imc <= 40) {
+			System.out.printf("Você está com obesidade grau 2, seu IMC é: = %.2f %n", (imc));
+		} else {
+			System.out.printf("Você está com obesidade grau 3, seu IMC é: = %.2f %n", (imc));
+		}
+
+	}
+
+}
