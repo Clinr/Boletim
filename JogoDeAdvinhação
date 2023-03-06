@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Jogo {
+
+	public static void main(String[] args) {
+		Scanner leitor = new Scanner(System.in);
+		Random random = new Random();
+		int chances = 3;
+		int bot = random.nextInt(10) + 1;
+		  int i = 1;
+    	
+		
+		
+		 System.out.println("Chute um número de 1 a 10: ");
+              chances = leitor.nextInt();
+              while(chances != bot) {
+            	
+            	  
+            	  if(chances < bot) {
+            		  System.out.println("Chute um número maior: ");
+            		  
+            	  } else{
+            		  System.out.println("Chute um número menor: "); 
+            		  
+            	  } chances = leitor.nextInt();
+        		  i++;
+            	  
+              } System.out.println("Você acertou! Em " + i + " chutes.");
+	}
+
+}
