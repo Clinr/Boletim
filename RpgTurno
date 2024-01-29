@@ -1,0 +1,104 @@
+package projeto.main;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class GameLogic {
+	static int hpUser1 = 75;
+	static int hpBot1 = 50;
+	static int escolha;
+	static Scanner leitor = new Scanner(System.in);
+
+	static int hpUser() {
+		System.out.println("HP do Usuário: " + hpUser1);
+		return hpUser1;
+
+	}
+
+	static int hpBot() {
+		int dano2 = 0;
+		System.out.println("O Hp do bot é " + hpBot1);
+		if (escolha == 1) {
+			dano2 = 10;
+		} else if (escolha == 2) {
+			dano2 = 20;
+		} else {
+			dano2 = 0;
+		}
+		hpBot1 -= dano2;
+		System.out.println("Você causou " + dano2 + " Agora o bot está com " + hpBot1 + " de hp");
+		return hpBot1;
+	}
+
+	static int ataqueUser() {
+		
+		System.out.println("Escolha seu ataque");
+		System.out.println("(1) - Ataque Leve");
+		System.out.println("(2) - Ataque Pesado");
+
+		escolha = leitor.nextInt();
+		return escolha;
+	}
+
+	static int ataqueBot() {
+		int ataqueBot1 = 0;
+
+		if (hpBot1 > 0) {
+			int dano = 0;
+			Random aleatorio = new Random();
+
+			ataqueBot1 = aleatorio.nextInt(2) + 1;
+
+			if (ataqueBot1 == 1) {
+				System.out.println("BOT -- (1) ATAQUE LEVE");
+				dano = 10;
+			} else {
+				System.out.println("BOT -- (2) ATAQUE PESADO");
+				dano = 20;
+			}
+			hpUser1 -= dano;
+			System.out.println("Bot causou " + dano + " De dano ao seu hp, agora é de " + hpUser1);
+		}
+		return ataqueBot1;
+
+	}
+
+	public static void main(String[] args) {
+		boolean newgame = true;
+		
+		while(newgame) {
+		while (hpUser1 > 0 && hpBot1 > 0) {
+			int hpUsuario = hpUser();
+			int escolhaUsuario = ataqueUser();
+			if (escolhaUsuario == 1 || escolhaUsuario == 2) {
+				
+			if (escolhaUsuario == 1) {
+				System.out.println("Você escolheu Ataque Leve");
+			} else if (escolhaUsuario == 2) {
+				System.out.println("Você escolheu Ataque Pesado");
+			}
+			hpBot();
+			ataqueBot();
+		 } else {
+			 System.out.println("Escolha Inválida, escolha novamente");
+		 }
+		}
+		if (hpUser1 <= 0) {
+			System.out.println("Você perdeu! O bot venceu.");
+		} else {
+			System.out.println("O bot perdeu, Você venceu!");
+		}  
+		 System.out.println("Deseja jogar novamente?  	S - sim, N - Não ");
+		 
+		 String resposta = leitor.next();
+		 leitor.nextLine();
+		 
+         while(!(resposta.equalsIgnoreCase("s") || resposta.equalsIgnoreCase("n"))){
+        	 System.out.println("Opção Inválida. Digite S - Sim, N - Não");
+        	 resposta = leitor.next();
+        	 leitor.nextLine();
+         }
+         newgame = resposta.equalsIgnoreCase("s");
+	}
+ }
+}
